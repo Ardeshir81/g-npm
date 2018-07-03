@@ -1,6 +1,6 @@
 {
   "name": "glbl-npm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "always run global npm (even if local present)",
   "main": "index.js",
   "repository": {
