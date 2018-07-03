@@ -46,4 +46,4 @@ function npm(args) {
 console.log('node version:');
 npm('-v');
 
-exports = npm;
+module.exports = npm;
