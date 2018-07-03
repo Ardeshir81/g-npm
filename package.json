@@ -1,10 +1,14 @@
 {
-  "name": "g-npm",
+  "name": "glbl-npm",
   "version": "1.0.0",
   "description": "always run global npm (even if local present)",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ardeshir81/g-npm"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Ardeshir81 <ardeshireo@gmail.com>",
   "license": "GPL-3.0"
