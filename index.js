@@ -1,3 +1,5 @@
+//TODO: checkout npm config get prefix
+
 const {exec} = require('child_process');
 
 function npmAddress(stdout) {
