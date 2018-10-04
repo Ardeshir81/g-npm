@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 // TODO: checkout npm config get prefix
+// TODO: you should use whereis instead of which
 
 const {exec} = require('child_process');
 
