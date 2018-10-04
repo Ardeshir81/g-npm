@@ -1,23 +1,18 @@
-//TODO: checkout npm config get prefix
+#! /usr/bin/env node
+
+// TODO: checkout npm config get prefix
 
 const {exec} = require('child_process');
 
 function npmAddress(stdout) {
-    return stdout
-        .substr(0, stdout.indexOf('\n') > 0 ? stdout.indexOf('\n') : stdout.length)
-        .substr(0, stdout.indexOf('\n') > 0 ? stdout.indexOf('\r') : stdout.length);
+return stdout.substr(0,stdout.length -1);
 }
 
 function getGlobalNpmPath() {
     return new Promise((resolve, reject) => {
-        exec('which npm', (err1, stdout) => {
-            if (err1) {
-                exec('where npm', (err2, stdout) => {
-                    if (err2) {
-                        reject({err1, err2});
-                    }
-                    resolve(npmAddress(stdout));
-                });
+        exec('which npm', (err, stdout) => {
+            if (err) {
+                reject(err);
                 return;
             }
             resolve(npmAddress(stdout));
@@ -40,12 +35,15 @@ function logExecResult(err, stdout) {
 function npm(args) {
     getGlobalNpmPath().then(result => {
         let npmPath = wrapInString(result);
-        console.log('executing', npmPath + ' ' + args);
         exec(npmPath + ' ' + args, logExecResult)
     });
 }
 
-console.log('node version:');
+console.log('npm version:');
 npm('-v');
+
+let commandToRun = process.argv.splice(2,process.argv.length - 1).join(' ');
+
+npm(commandToRun);
 
 module.exports = npm;
